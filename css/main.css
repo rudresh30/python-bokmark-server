@@ -1,0 +1,16 @@
+*{
+  border: 1px solid red;
+}
+
+.container{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.form-widget{
+  width:100%;
+}
+
+.button{
+  color: blue;
+}
