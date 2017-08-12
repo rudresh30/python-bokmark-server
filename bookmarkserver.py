@@ -96,7 +96,7 @@ class bookmarkserver(server.BaseHTTPRequestHandler):
             existing_entries[parse_qs(data)["shorturl"][0]] = longurl
             self.send_response(303)
             self.send_header('Content-type','text/plain; charset=utf-8')
-            self.send_header('Location','http://localhost:8000')
+            self.send_header('Location','https://pyt-bookmark-server.herokuapp.com')
             self.end_headers()
 
             self.wfile.write("sucess...".encode())
