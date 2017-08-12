@@ -3,6 +3,8 @@
 from http import server
 import requests
 from urllib.parse import unquote,parse_qs
+import threading
+from socketserver import ThreadingMixIn
 import os
 
 
@@ -24,7 +26,9 @@ def validlongURI(longurl):
     except:
          return False
 
+#add threading to the server
 
+class ThreadHTTPServer(ThreadingMixIn,server.HTTPServer):
 class bookmarkserver(server.BaseHTTPRequestHandler):
     def do_GET(self):
 
@@ -110,5 +114,5 @@ class bookmarkserver(server.BaseHTTPRequestHandler):
 if __name__ == '__main__':
     port = int(os.environ.get('PORT',8000))
     server_address = ('',port)
-    httpd = server.HTTPServer(server_address,bookmarkserver)
+    httpd = ThreadHTTPServer(server_address,bookmarkserver)
     httpd.serve_forever()
