@@ -109,6 +109,6 @@ class bookmarkserver(server.BaseHTTPRequestHandler):
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT',8000))
-    server_address = ('',8000)
+    server_address = ('',port)
     httpd = server.HTTPServer(server_address,bookmarkserver)
     httpd.serve_forever()
